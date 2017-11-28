@@ -1,0 +1,14 @@
+
+<form class="ui large form segment"> 
+  <h3 class="ui header">Add a post</h3>
+  <div class="field">
+	<p><label for="title">Title:</label> </p>
+  <input id="title" name="title" #newtitle>
+  </div>
+
+  <div class="field">
+    <p><label for="body">Body:</label></p>
+    <textarea name="body" id="body" cols="30" rows="10" #newbody></textarea>
+  </div>
+ <p> <button class="ui button" type="submit" (click)="AddPost(newtitle,newbody)">Post</button></p>
+</form>		
