@@ -9,11 +9,15 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/database', {useMongoClient:true});
+//To connect to the database
+mongoose.connect('mongodb://iker:iker@ds123136.mlab.com:23136/webapp-project', {useMongoClient:true});
 
 
 var app = express();
 var router = express.Router();
+
+//To be able to use the Post Schema
+require('./models/Post');
 
 router.get('/api/post',function(req,res,next){
   res.send("process the request here");

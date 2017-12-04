@@ -6,9 +6,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-const mongoose = require('mongoose');
+let mongoose = require('mongoose');
+let Post = mongoose.model('Post');
 
-mongoose.connect('mongodb://localhost/database', {useMongoClient: true});
+router.get('/api/posts/',function(req,res,next){
+
+});
+
+
 
 
 module.exports = router;
