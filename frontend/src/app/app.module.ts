@@ -4,34 +4,27 @@ import { HttpModule } from '@angular/http';
 import { RouterModule,Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { PostComponent } from './post/post.component';
-import { AddPostsComponent } from './add-posts/add-posts.component';
+import { PostComponent } from './posts/post/post.component';
+import { AddPostsComponent } from './posts/add-posts/add-posts.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {SuiModule} from 'ng2-semantic-ui';
-import { PostListComponent } from './post-list/post-list.component';
-
-const appRoutes:Routes = [
-  {path: 'post-list', component: PostListComponent},
-  {path: 'add-post', component: AddPostsComponent }
-]
+import { PostListComponent } from './posts/post-list/post-list.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { PostModule } from './posts/post.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    PostComponent,
-    AddPostsComponent,
-    PostListComponent
+    PageNotFoundComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SuiModule,
-    RouterModule.forRoot(appRoutes)
+    PostModule,
+    AppRoutingModule
+    
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
