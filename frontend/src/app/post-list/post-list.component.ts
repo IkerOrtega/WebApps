@@ -12,10 +12,15 @@ import { PostDataService } from '../post-data.service';
 export class PostListComponent implements OnInit {
   private _posts: Post[];
   constructor(private _postDataService : PostDataService) { 
-    this._posts=this._postDataService.posts;
+  
   }
 
   ngOnInit() {
+    this._postDataService.posts.subscribe(items => this._posts = items);
   }
+  get posts(){
+    return this._posts;
+  }
+  
   
 }

@@ -5,4 +5,4 @@ var PostSchema = new mongoose.Schema({
     body: String
 });
 
-mongoose.model('Post',PostSchema);
+module.exports = mongoose.model('Post',PostSchema);

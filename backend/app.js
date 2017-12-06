@@ -4,24 +4,31 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const port = '3000';
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+
 var mongoose = require('mongoose');
 
 //To connect to the database
-mongoose.connect('mongodb://iker:iker@ds123136.mlab.com:23136/webapp-project', {useMongoClient:true});
+mongoose.connect('mongodb://localhost/database', {useMongoClient:true});
+
+
+
+
+//To be able to use the Post Schema
+require('./models/Post');
+
 
 
 var app = express();
 var router = express.Router();
 
-//To be able to use the Post Schema
-require('./models/Post');
 
-router.get('/api/post',function(req,res,next){
-  res.send("process the request here");
-});
+app.get('/', (request, response) => {
+  response.json({
+      message: 'hello world'
+  })
+}); 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,6 +41,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var index = require('./routes/index');
+var users = require('./routes/users');
 
 app.use('/', index);
 app.use('/users', users);
@@ -54,6 +64,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(port, () => {
+  console.log("App listening at port: " + port);
 });
 
 module.exports = app;

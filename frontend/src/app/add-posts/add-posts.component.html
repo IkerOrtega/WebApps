@@ -1,14 +1,22 @@
 
-<form class="ui large form segment"> 
+<form  class="ui large form segment" [formGroup]='post' (ngSubmit)='onSubmit()'> 
   <h3 class="ui header">Add a post</h3>
   <div class="field">
 	<p><label for="title">Title:</label> </p>
-  <input id="title" name="title" #newtitle>
+  <input id="title" name="title" id="title_id" formControlName='title' #spy>
   </div>
+  <div *ngIf='post.get("title").errors?.minlength && post.get("title").touched' 
+  class='ui pointing red basic label'>
+  Title is too short.
+</div>
 
   <div class="field">
     <p><label for="body">Body:</label></p>
-    <textarea name="body" id="body" cols="30" rows="10" #newbody></textarea>
+    <textarea name="body" id="body_id" cols="30" rows="10" formControlName='body'></textarea>
   </div>
- <p> <button class="ui button" type="submit" (click)="AddPost(newtitle,newbody)">Post</button></p>
+  <div *ngIf='post.get("body").errors?.minlength && post.get("body").touched' 
+  class='ui pointing red basic label'>
+  Body is too short.
+</div>
+ <p> <button class="ui button" type="submit" [disabled]='!post.valid'>Post</button></p>
 </form>		

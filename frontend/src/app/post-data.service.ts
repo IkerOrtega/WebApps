@@ -1,22 +1,27 @@
 import { Injectable } from '@angular/core';
 import {Post} from './post/post.model'
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import { ObserveOnMessage } from 'rxjs/operators/observeOn';
+
 @Injectable()
 export class PostDataService {
-  private _posts = new Array<Post>();
-  constructor() {
-    let Post1 = new Post("post 1","first test post");
-    let Post2 = new Post("post 2","another test post");
-
-    this._posts.push(Post1);
-    this._posts.push(Post2);
+  private _appUrl = '/api/posts';
+  constructor( private http: Http) {
+   
    }
 
-   get posts() {
-    return this._posts;
+  get posts(): Observable<Post[]>{
+    return this.http.get(this._appUrl).map(response =>
+      response.json().map(item =>
+        new Post(item.title,item.body)
+      )
+    );
   }
 
-  addNewPosts(post){
-    this._posts.push(post);
+  addNewPost(rec): Observable<Post>{
+    return this.http.post(this._appUrl,rec).map(res => res.json()).map(item => new Post(item.title,item.body));
   }
 
 }
