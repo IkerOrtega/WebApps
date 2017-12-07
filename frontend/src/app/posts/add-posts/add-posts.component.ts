@@ -3,7 +3,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Post} from './../post.model';
 import { PostDataService } from './../post-data.service'
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators, FormControl,ReactiveFormsModule } from '@angular/forms';
-const uuidv1 = require('uuid/v1');
+import {Router} from '@angular/router'
+
 
 @Component({
   selector: 'app-add-posts',
@@ -14,8 +15,11 @@ const uuidv1 = require('uuid/v1');
 export class AddPostsComponent implements OnInit {
   @Output() public newPost = new EventEmitter<Post>();
   private post: FormGroup;
-  private id : string;
-  constructor(private fb: FormBuilder, private _postDataService: PostDataService) { }
+  private sdate : string;
+  private date : Date;
+  private minutes: string;
+  private month: number;
+  constructor(private fb: FormBuilder, private _postDataService: PostDataService,private _router: Router) { }
 
   ngOnInit() {
     this.post = this.fb.group({
@@ -23,13 +27,26 @@ export class AddPostsComponent implements OnInit {
       body: this.fb.control('', [Validators.required, Validators.minLength(3)])
     })
   }
+  formatDate(date :Date){
+    if (date.getMinutes() < 10) {
+      this.minutes = "0" + date.getMinutes();
+    } else {
+      this.minutes = date.getMinutes().toString();
+    }
+    this.month = date.getMonth() + 1;
+
+    return date.getDay() + "/" + this.month + "/" + date.getFullYear() + " " + date.getHours() + ":" + this.minutes;
+  }
 
  onSubmit()
   {
-    this.id = uuidv1();
-    const post = new Post(this.id,this.post.value.title,this.post.value.body);
-    this._postDataService.addNewPost(post).subscribe
+     this.date = new Date();
+     this.sdate = this.formatDate(this.date);
+    const post = new Post(this.post.value.title,this.post.value.body,this.date,this.sdate,"example Author");
+    this._postDataService.addNewPost(post).subscribe(); 
+    this._router.navigate(['post/list']);
   }
-
 }
+
+
 

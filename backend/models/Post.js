@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 
 var PostSchema = new mongoose.Schema({
-    id: String,
     title: String,
-    body: String
+    body: String,
+    date: Date,
+    sdate: String,
+    autor: String
 });
 
 module.exports = mongoose.model('Post',PostSchema);

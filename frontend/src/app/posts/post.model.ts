@@ -1,22 +1,32 @@
 export class Post {
-  private _id: string;
     private _title: string;
     private _body : string;
+    private _date : Date;
+    private _sdate: string;
+    private _autor : string;
 
   
-    constructor(id: string,title: string,body:string) {
+    constructor(title: string,body:string,date : Date,sdate: string, autor: string) {
       this._title = title;
       this._body = body;
+      this._date = date;
+      this._sdate = sdate;
+      this._autor = autor;
     }
 
     toJSON(){
       return{
         title: this._title,
-        body: this._body
+        body: this._body,
+        date: this._date,
+        sdate: this._sdate,
+        autor: this._autor
       } 
    
    
     }
+
+    
     get title(){
       return this._title;
     }
@@ -32,4 +42,17 @@ export class Post {
     set body(body:string){
       this._body = body;
     }
+
+    get autor(){
+      return this._autor;
+    }
+
+    get date(){
+      return this._date; 
+    }
+
+    get sdate(){
+      return this._sdate;
+    }
+
   }

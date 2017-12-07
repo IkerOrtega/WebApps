@@ -13,9 +13,8 @@ private _post : Post;
   constructor(private route: ActivatedRoute, private postDataService: PostDataService) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.postDataService.getPost(id)
-    .subscribe(item => this._post = item);
+    this.route.data.subscribe(item => 
+      this._post = item['post']);
   }
 
 }

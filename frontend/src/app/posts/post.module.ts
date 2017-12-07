@@ -8,11 +8,13 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {PostDataService} from './post-data.service';
 import { RouterModule } from '@angular/router';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import {PostResolverService} from './post-resolver.service'
 
 const routes = [
-{path: 'post-list', component: PostListComponent},
-{path: 'add-post', component: AddPostsComponent },
-{path: 'post-detail/:id', component: PostDetailComponent}
+{path: 'post/list', component: PostListComponent},
+{path: 'post/add', component: AddPostsComponent },
+{path: 'post/:uid', component: PostDetailComponent,
+resolve: {post: PostResolverService}}
 ];
 
 @NgModule({
@@ -29,7 +31,8 @@ const routes = [
   PostDetailComponent
 ],
 providers: [
-  PostDataService
+  PostDataService,
+  PostResolverService
 ]
 })
 export class PostModule { }
