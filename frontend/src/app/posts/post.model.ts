@@ -26,6 +26,7 @@ export class Post {
    
     }
 
+  
     
     get title(){
       return this._title;

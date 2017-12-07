@@ -17,7 +17,7 @@ export class PostDataService {
   get posts(): Observable<Post[]>{
     return this.http.get(`${this._appUrl}/posts`).map(response =>
       response.json().map(item =>
-        new Post(item.title,item.body,item.date,item.sdate, item.autor)
+        new Post(item.title,item.body,item.date,item.sdate,item.autor)
       )
     );
 

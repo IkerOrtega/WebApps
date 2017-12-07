@@ -13,7 +13,7 @@ export class PostResolverService implements Resolve<Post>{
 
   resolve(route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot): Observable<Post> {
-      return this.postService.getPost(route.params['uid']);
+      return this.postService.getPost(route.params['id']);
 }
   
 

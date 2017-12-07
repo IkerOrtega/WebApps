@@ -13,7 +13,7 @@ import {PostResolverService} from './post-resolver.service'
 const routes = [
 {path: 'post/list', component: PostListComponent},
 {path: 'post/add', component: AddPostsComponent },
-{path: 'post/:uid', component: PostDetailComponent,
+{path: 'post/:id', component: PostDetailComponent,
 resolve: {post: PostResolverService}}
 ];
 
