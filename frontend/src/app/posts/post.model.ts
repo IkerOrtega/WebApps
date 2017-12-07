@@ -1,9 +1,10 @@
 export class Post {
+  private _id: string;
     private _title: string;
     private _body : string;
 
   
-    constructor(title: string,body:string) {
+    constructor(id: string,title: string,body:string) {
       this._title = title;
       this._body = body;
     }

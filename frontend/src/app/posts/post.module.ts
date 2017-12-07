@@ -7,10 +7,12 @@ import {HttpModule} from '@angular/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {PostDataService} from './post-data.service';
 import { RouterModule } from '@angular/router';
+import { PostDetailComponent } from './post-detail/post-detail.component';
 
 const routes = [
 {path: 'post-list', component: PostListComponent},
-{path: 'add-post', component: AddPostsComponent }
+{path: 'add-post', component: AddPostsComponent },
+{path: 'post-detail/:id', component: PostDetailComponent}
 ];
 
 @NgModule({
@@ -23,7 +25,8 @@ const routes = [
   declarations: [
    PostComponent,
     AddPostsComponent,
-  PostListComponent
+  PostListComponent,
+  PostDetailComponent
 ],
 providers: [
   PostDataService
