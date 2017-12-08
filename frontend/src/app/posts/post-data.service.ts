@@ -1,7 +1,7 @@
-
+import { AuthenticationService } from '../user/authentication.service';
 import { Injectable } from '@angular/core';
 import {Post} from './post.model'
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { ObserveOnMessage } from 'rxjs/operators/observeOn';
@@ -10,14 +10,15 @@ import { ObserveOnMessage } from 'rxjs/operators/observeOn';
 @Injectable()
 export class PostDataService {
   private _appUrl = 'http://localhost:4200/api';
-  constructor( private http: Http) {
+  constructor( private http: Http, private auth: AuthenticationService) {
    
    }
 
   get posts(): Observable<Post[]>{
-    return this.http.get(`${this._appUrl}/posts`).map(response =>
+    return this.http.get(`${this._appUrl}/posts`,{ headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) }).map(response =>
       response.json().map(item =>
-        new Post(item.title,item.body,item.date,item.sdate,item.autor)
+        new Post(item.title,item.body,item.date,item.sdate,item.autor),
+        
       )
     );
 

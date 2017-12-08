@@ -4,10 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const passport = require('passport');
+const mongoose = require('mongoose');
+
 const port = '3000';
 
+require('./config/passport');
 
-var mongoose = require('mongoose');
+
 
 //To connect to the database
 mongoose.connect('mongodb://localhost/database', {useMongoClient:true});
@@ -17,8 +21,11 @@ mongoose.connect('mongodb://localhost/database', {useMongoClient:true});
 
 //To be able to use the Post Schema
 require('./models/Post');
+require('./models/User');
 
 
+var index = require('./routes/index');
+var users = require('./routes/users');
 
 var app = express();
 var router = express.Router();
@@ -29,6 +36,8 @@ app.get('/', (request, response) => {
       message: 'hello world'
   })
 }); 
+
+app.use(passport.initialize());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,11 +51,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var index = require('./routes/index');
-var users = require('./routes/users');
 
-app.use('/', index);
-app.use('/users', users);
+
+app.use('/api', index);
+app.use('/api/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -18,6 +18,7 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
     this._postDataService.posts.subscribe(items => this._posts = items);
   }
+  
   get posts(){
     return this._posts;
   }

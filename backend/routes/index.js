@@ -1,12 +1,15 @@
 var express = require('express');
 var router = express.Router();
-
-
+var app = express();
 
 let mongoose = require('mongoose');
 let Post = mongoose.model('Post');
 
-router.get('/api/posts/',function(req,res,next){
+var users = require('./users');
+
+app.use('/users', users);
+
+router.get('/posts/',function(req,res,next){
   let query = Post.find().populate("posts");
   query.exec(function( err, posts){
     if (err) return next(err);
@@ -14,7 +17,7 @@ router.get('/api/posts/',function(req,res,next){
   });
 });
 
-router.post('/api/posts/',function(req,res,next){
+router.post('/posts/',function(req,res,next){
   let post = new Post(req.body);
   post.save(function(err,rec){
     if (err) { return next(err); }
@@ -34,15 +37,17 @@ router.post('/api/posts/',function(req,res,next){
     });
   });
 
-  router.get('/api/post/:post', function(req,res){
+  router.get('/post/:id', function(req,res){
       res.json(req.post);
   });
 
-  router.delete('/api/post/:post', function(req,res){
+  router.delete('/post/:id', function(req,res){
     req.post.remove(function(err){
       if(err){ return next(err);}
       res.json("removed post");
     });
 });
+
+
 
 module.exports = router;
