@@ -15,18 +15,12 @@ export class AppComponent implements OnInit {
   private _posts: Post[];
 
   ngOnInit(){
-    this._postDataService.posts.subscribe(items => this._posts = items);
+    
   }
 
 
   constructor(private _postDataService : PostDataService) {  }
   
-  get posts(){
-    return this.posts;
-  }
-
-  newPostAdded(post){
-    this._postDataService.addNewPost(post).subscribe(item => this._posts.push(item));
-  }
+  
   
 }

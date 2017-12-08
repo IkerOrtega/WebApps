@@ -9,10 +9,11 @@ import {PostDataService} from './post-data.service';
 import { RouterModule } from '@angular/router';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import {PostResolverService} from './post-resolver.service'
-
+import {AuthGuardService} from './../user/auth-guard.service'
+ 
 const routes = [
-{path: 'post/list', component: PostListComponent},
-{path: 'post/add', component: AddPostsComponent },
+{path: 'post/list', canActivate: [ AuthGuardService ], component: PostListComponent},
+{path: 'post/add',canActivate: [ AuthGuardService ], component: AddPostsComponent },
 {path: 'post/:id', component: PostDetailComponent,
 resolve: {post: PostResolverService}}
 ];

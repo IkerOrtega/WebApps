@@ -5,13 +5,14 @@ import {PageNotFoundComponent} from '../page-not-found/page-not-found.component'
 import { PreloadAllModules } from '@angular/router';
 import {LoginComponent} from './../user/login/login.component'
 import {RegisterComponent} from './../user/register/register.component'
+import {AuthGuardService} from './../user/auth-guard.service'
 
 const appRoutes:Routes = [
   {
-    path: 'post', loadChildren: 'app/posts/post.module#PostModule'
+    path: 'post', canActivate: [ AuthGuardService ],loadChildren: 'app/posts/post.module#PostModule'
   }, { path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent},
-  { path: '', redirectTo: 'post/list', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent}
 ];
 

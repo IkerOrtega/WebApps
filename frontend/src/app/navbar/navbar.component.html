@@ -1,7 +1,7 @@
 <div class="ui five item pointing menu">
-   <a routerLink="/post/list" class="btn lightblue item" routerLinkActive="active">Post List</a>
+   <a *ngIf="(currentUser | async)" routerLink="/post/list" class="btn lightblue item" routerLinkActive="active">Post List</a>
 
-  <a routerLink="/post/add" class="btn lightblue item" routerLinkActive="active">Add Post</a>
+  <a *ngIf="(currentUser | async)" routerLink="/post/add" class="btn lightblue item" routerLinkActive="active">Add Post</a>
 
   <a *ngIf="!(currentUser | async)" routerLink="/register" class="btn lightblue item" routerLinkActive="active">Register</a>
 
@@ -10,7 +10,7 @@
       <ng-template #loginlink>
         <a class="btn lightblue item" routerLinkActive='active' [routerLink]="['/login']">Log in</a>
       </ng-template>
-      
+
       <div class="item" >{{loginText}}</div>
   </div>
  

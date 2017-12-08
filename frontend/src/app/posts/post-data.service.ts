@@ -24,13 +24,13 @@ export class PostDataService {
 
   } 
   getPost(id): Observable<Post>{
-    return this.http.get(`${this._appUrl}/post/${id}`)
+    return this.http.get(`${this._appUrl}/post/${id}`,{ headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) })
     .map(response => response.json()).map(item => new Post(item.title,item.body,item.date,item.sdate,item.autor));
   }
 
   addNewPost(rec): Observable<Post>{ 
     
-    return this.http.post(`${this._appUrl}/posts`,rec).map(res => res.json()).map(item => new Post(item.title,item.body,item.date,item.sdate,item.autor));
+    return this.http.post(`${this._appUrl}/posts`,{ headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) },rec).map(res => res.json()).map(item => new Post(item.title,item.body,item.date,item.sdate,item.autor));
     
 
   }

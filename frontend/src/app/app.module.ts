@@ -13,7 +13,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { PostModule } from './posts/post.module';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
-import {UserModule} from './user/user.module'
+import {UserModule} from './user/user.module';
+import { HomeComponent } from './home/home.component'
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {UserModule} from './user/user.module'
     PageNotFoundComponent,
     NavbarComponent,
     LoginComponent,
+    HomeComponent,
   
   ],
   imports: [
