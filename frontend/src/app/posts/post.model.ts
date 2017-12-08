@@ -1,11 +1,17 @@
 export class Post {
+    private _id:string;
     private _title: string;
     private _body : string;
     private _date : Date;
     private _sdate: string;
     private _autor : string;
 
-  
+    static fromJSON(json): Post{
+      const post = new Post(json.title,json.body,json.date,json.sdate,json.autor);
+      post._id = json._id;
+      return post;
+    }
+
     constructor(title: string,body:string,date : Date,sdate: string, autor: string) {
       this._title = title;
       this._body = body;
@@ -16,6 +22,7 @@ export class Post {
 
     toJSON(){
       return{
+        _id: this._id,
         title: this._title,
         body: this._body,
         date: this._date,
@@ -26,7 +33,9 @@ export class Post {
    
     }
 
-  
+    get id(){
+      return this._id;
+    }
     
     get title(){
       return this._title;

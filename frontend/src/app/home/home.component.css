@@ -1,0 +1,41 @@
+.wrapper{
+    
+    width:70%;
+    height:100%;
+    margin: 0 auto;
+    background-color: white;
+}
+
+body{
+    background-color: rgb(168, 168, 253);
+ 
+}
+
+
+
+
+.aroundimg{
+    display: block;
+    margin: auto;
+
+}
+.textDiv{
+    display: block;
+    outline: 0;
+    border: 1px solid rgb(29, 29, 29);
+  
+    
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin-bottom: 30px;
+
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    transition-duration: 0.25s;
+    font-weight: 300;
+}
+.divider{
+    margin: 30 auto;
+}

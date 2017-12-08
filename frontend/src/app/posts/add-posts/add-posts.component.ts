@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import { AuthenticationService } from '../../user/authentication.service';
 
 
+
 @Component({
   selector: 'app-add-posts',
   templateUrl: './add-posts.component.html',
@@ -46,7 +47,7 @@ export class AddPostsComponent implements OnInit {
      this.sdate = this.formatDate(this.date);
     const post = new Post(this.post.value.title,this.post.value.body,this.date,this.sdate,this._authService.user$.value);
     this._postDataService.addNewPost(post).subscribe();
-    
+    console.log(post.autor);
     this._router.navigate(['post/list']);
   }
 }

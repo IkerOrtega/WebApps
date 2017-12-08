@@ -11,12 +11,15 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   private loginText : string;
+  private isText: boolean;
   constructor(private authService: AuthenticationService,private router: Router) {
     if(this.authService.user$.value !== null){
       this.loginText="Welcome, "+ this.authService.user$.value;
+      this.isText=true;
     }
     else if(this.authService.user$.value === null){
     this.loginText="";
+    this.isText=false;
     }
   }
     
@@ -31,14 +34,20 @@ export class NavbarComponent implements OnInit {
     setloginText(input:string){
       window.location.reload();
     this.loginText=input;
+    if(input != "") 
+    {this.isText=true;}
+    else{
+      this.isText=false;
+    }
     
     }
 
 
     logout(){
       this.authService.logout();
-      this.router.navigate(['post/list']);
+      this.router.navigate(['home']);
       this.loginText="You have been logged out";
+      this.isText = false;
 
     }
 

@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(168, 168, 253);
+}
+.wrapper{
+    
+    width:70%;
+    height:100%;
+    margin: 0 auto;
+    background-color: white;
+}
+.textDiv{
+    display: block;
+    outline: 0;
+    border: 1px solid rgb(29, 29, 29);
+    background-color: fade(white, 20%);
+    
+    border-radius: 3px;
+    padding: 30px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    transition-duration: 0.25s;
+    font-weight: 300;
+}

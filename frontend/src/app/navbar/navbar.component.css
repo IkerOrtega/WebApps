@@ -1,0 +1,50 @@
+.navbar {
+  background-color: rgb(168, 168, 253);
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    }
+  
+  
+
+  
+  .btn {
+    border-radius: 5px;
+    padding: 15px 40px;
+    font-size: 16px;
+    font-family: Verdana;
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+  
+  }
+  
+  .lightblue {
+    background-color: #0099CC;
+  }
+  
+  .message{
+  background-color: #003366;
+  align-self: center;
+  text-align: center;
+  margin-top: 45px;
+  margin-bottom:0px;
+  margin-right: 45px;
+  border-radius: 5px;
+  padding: 15px 40px;
+  font-size: 13px;
+  font-family: Verdana;
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  max-width: 60%;
+  max-height: 60%;
+  
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+
+

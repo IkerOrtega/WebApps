@@ -1,11 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
+.wrapper{
+  
+  width:70%;
+  height:100%;
+  margin: 0 auto;
+  background-color: white;
+}
 
+body{
+  background-color: rgb(168, 168, 253);
+
+}
 
 form {
 width:60vw;
 margin: 0 auto;
 display:block;
+}
 
 input {
   display: block;
@@ -34,11 +46,9 @@ input {
     cursor: pointer;
     font-size: 18px;
     transition-duration: 0.25s;
-    &:hover {
-      background-color: rgb(245, 247, 249);
-    }
+    
   }
-}
+
 section{
   width:100vw;
   display:flex;

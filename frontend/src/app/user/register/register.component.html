@@ -1,4 +1,5 @@
-<section>
+<body>
+    <div class="wrapper">
     <form [formGroup]='user' (ngSubmit)='onSubmit()' class="ui large form">
       <h3 class="ui">Register new user</h3>
       <div class="field">
@@ -32,4 +33,6 @@
       </div>
       <button type='submit' [disabled]='!user.valid' class="ui positive right floated button registerbtn">register</button>
     </form>
-    </section>
+    </div>
+  </body>
+

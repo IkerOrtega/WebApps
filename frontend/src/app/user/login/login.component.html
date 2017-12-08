@@ -1,4 +1,6 @@
-<section>
+<body>
+    <div class="wrapper">
+
     <form [formGroup]='user' (ngSubmit)='onSubmit()' class="ui large form">
       <h3 class="ui">Log In</h3>
       <div class="field">
@@ -12,4 +14,7 @@
       <button type='submit' class="ui positive right floated button loginbtn">Log In</button>
       <div *ngIf='errorMsg' class='ui red label'>{{errorMsg}}</div>
     </form>
-    </section>
+   
+  </div>
+  
+  </body>

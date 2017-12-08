@@ -1,8 +1,10 @@
-<p>
-  See posts:
-</p>
-<div class="ui raised very padded text container segment">
+<body >
+    <div class="wrapper">
+<div class="ui segment textDiv">List of Posts:</div>
+<div class="ui  container segment">
 <div class="ui list">
   <app-post *ngFor="let localpost of posts" [post]="localpost"></app-post>
 </div>
 </div>
+    </div>
+</body>

@@ -1,7 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
 
+.wrapper{
+  
+  width:70%;
+  height:100%;
+  margin: 0 auto;
+  background-color: white;
+}
 
+body{
+  background-color: rgb(168, 168, 253);
+
+}
 
 
 form {

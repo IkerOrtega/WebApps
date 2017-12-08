@@ -5,10 +5,6 @@ var app = express();
 let mongoose = require('mongoose');
 let Post = mongoose.model('Post');
 
-var users = require('./users');
-
-app.use('/users', users);
-
 router.get('/posts/',function(req,res,next){
   let query = Post.find().populate("posts");
   query.exec(function( err, posts){
@@ -21,7 +17,7 @@ router.post('/posts/',function(req,res,next){
   let post = new Post(req.body);
   post.save(function(err,rec){
     if (err) { return next(err); }
-    res.json(rec);
+    res.json(post);
   });
   });
 

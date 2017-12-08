@@ -13,14 +13,14 @@ import {AuthenticationService} from './../../user/authentication.service'
 export class PostListComponent implements OnInit {
   private _posts: Post[];
   constructor(private _postDataService : PostDataService, private auth : AuthenticationService) { 
-    if(!(this.auth.user$.value !== null))
+    if(this.auth.user$.value !== null)
     {
     this._postDataService.posts.subscribe(items => this._posts = items);
     }
   }
 
   ngOnInit() {
-    if(!(this.auth.user$.value == null))
+    if(this.auth.user$.value !== null)
     {
     this._postDataService.posts.subscribe(items => this._posts = items);
   }

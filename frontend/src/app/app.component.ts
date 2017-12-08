@@ -8,18 +8,18 @@ import { AuthenticationService } from './user/authentication.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [PostDataService,AuthenticationService]
+ 
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  private _posts: Post[];
+
 
   ngOnInit(){
     
   }
 
 
-  constructor(private _postDataService : PostDataService) {  }
+  constructor() {  }
   
   
   

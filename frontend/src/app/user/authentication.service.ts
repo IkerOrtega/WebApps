@@ -1,11 +1,13 @@
 import { BehaviorSubject, Observable } from 'rxjs/Rx';
-import { Http, Response } from '@angular/http';
+import { Http, Response,Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import {Post} from './../posts/post.model'
+import {User} from './user.model'
 
 @Injectable()
 export class AuthenticationService {
-  private _url = '/api/users';
+  private _url = '/api';
   private _user$: BehaviorSubject<string>;
 
   public redirectUrl: string;
@@ -25,7 +27,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post(`${this._url}/login`, { username: username, password: password })
+    return this.http.post(`${this._url}/users/login`, { username: username, password: password })
       .map(res => res.json()).map(res => {
         const token = res.token;
         if (token) {
@@ -46,7 +48,7 @@ export class AuthenticationService {
   }
 
   register(username: string, password: string): Observable<boolean> {
-    return this.http.post(`${this._url}/register`, { username: username, password: password })
+    return this.http.post(`${this._url}/users/register`, { username: username, password: password, userList: new Array<User>() })
       .map(res => res.json()).map(res => {
         const token = res.token;
         if (token) {
@@ -62,7 +64,7 @@ export class AuthenticationService {
   
 
   checkUserNameAvailability(username: string): Observable<boolean> {
-    return this.http.post(`${this._url}/checkusername`, { username: username }).map(res => res.json())
+    return this.http.post(`${this._url}/users/checkusername`, { username: username }).map(res => res.json())
     .map(item => {
       if (item.username === 'alreadyexists') {
         return false;
@@ -71,5 +73,10 @@ export class AuthenticationService {
       }
     });
   }
-}           
+
+
+  
+  
+}
+          
 

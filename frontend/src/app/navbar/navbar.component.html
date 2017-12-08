@@ -1,4 +1,5 @@
-<div class="ui five item pointing menu">
+<div class="ui six item menu navbar">
+  <a  routerLink="/home" class="btn  item" routerLinkActive="active">Home</a>
    <a *ngIf="(currentUser | async)" routerLink="/post/list" class="btn lightblue item" routerLinkActive="active">Post List</a>
 
   <a *ngIf="(currentUser | async)" routerLink="/post/add" class="btn lightblue item" routerLinkActive="active">Add Post</a>
@@ -11,6 +12,6 @@
         <a class="btn lightblue item" routerLinkActive='active' [routerLink]="['/login']">Log in</a>
       </ng-template>
 
-      <div class="item" >{{loginText}}</div>
+      <div class="item" *ngIf="isText">{{loginText}}</div>
   </div>
  
